@@ -1,121 +1,121 @@
+# Mushroom Classification Project
+
 ![](UTA-DataScience-Logo.png)
 
-# Project Title
+## Project Title
 
-* **One Sentence Summary** Ex: This repository holds an attempt to apply LSTMs to Stock Market using data from
-"Get Rich" Kaggle challenge (provide link). 
+**Mushroom Classification Project**
+
+This repository holds an attempt to classify mushrooms as edible or poisonous using the Mushroom Classification Dataset from [Kaggle](https://www.kaggle.com/datasets/uciml/mushroom-classification).
 
 ## Overview
 
-* This section could contain a short paragraph which include the following:
-  * **Definition of the tasks / challenge**  Ex: The task, as defined by the Kaggle challenge is to use a time series of 12 features, sampled daily for 1 month, to predict the next day's price of a stock.
-  * **Your approach** Ex: The approach in this repository formulates the problem as regression task, using deep recurrent neural networks as the model with the full time series of features as input. We compared the performance of 3 different network architectures.
-  * **Summary of the performance achieved** Ex: Our best model was able to predict the next day stock price within 23%, 90% of the time. At the time of writing, the best performance on Kaggle of this metric is 18%.
+The task is to classify mushrooms as either edible (e) or poisonous (p) based on their features, such as cap shape, color, and odor, provided in the dataset.
+
+I treated this problem as a classification task. Several machine learning models were trained and compared, including Logistic Regression, Random Forest, K-Nearest Neighbors, and Support Vector Machines. Preprocessing involved cleaning and one-hot encoding categorical features.
+
+My best model, Random Forest, achieved perfect accuracy (100%) on the validation set.
 
 ## Summary of Workdone
 
-Include only the sections that are relevant an appropriate.
-
 ### Data
 
-* Data:
-  * Type: For example
-    * Input: medical images (1000x1000 pixel jpegs), CSV file: image filename -> diagnosis
-    * Input: CSV file of features, output: signal/background flag in 1st column.
-  * Size: How much data?
-  * Instances (Train, Test, Validation Split): how many data points? Ex: 1000 patients for training, 200 for testing, none for validation
+* **Data:**
+  * **Input:** A CSV file containing features of mushrooms (22 categorical features) and the target column (`class`).
+  * **Size:** 8,124 rows and 23 columns.
+  * **Instances:**
+    * Train: 60%
+    * Validation: 20%
+    * Test: 20%
 
 #### Preprocessing / Clean up
 
-* Describe any manipulations you performed to the data.
+* Dropped irrelevant features, such as `veil-type`, which had only one value.
+* Replaced `?` in `stalk-root` with `unknown` to handle missing data.
+* One-hot encoded categorical features, excluding the target column.
+* Ensured that no duplicate columns were present.
 
 #### Data Visualization
 
-Show a few visualization of the data and say a few words about what you see.
+* Histograms were created to compare feature distributions across edible and poisonous mushrooms.
+* Tabular summaries for categorical features were provided for better interpretability.
 
 ### Problem Formulation
 
-* Define:
-  * Input / Output
-  * Models
-    * Describe the different models you tried and why.
-  * Loss, Optimizer, other Hyperparameters.
+* **Input / Output:**
+  * Input: Preprocessed features after one-hot encoding.
+  * Output: Binary classification of mushrooms (`e` = edible, `p` = poisonous).
+* **Models:**
+  * Logistic Regression
+  * Random Forest
+  * K-Nearest Neighbors
+  * Support Vector Machines
+* **Metrics:** Accuracy and classification reports were used to evaluate the models.
 
 ### Training
 
-* Describe the training:
-  * How you trained: software and hardware.
-  * How did training take.
-  * Training curves (loss vs epoch for test/train).
-  * How did you decide to stop training.
-  * Any difficulties? How did you resolve them?
+* **Description:**
+  * Software: Python, Jupyter Notebook.
+  * Libraries: pandas, scikit-learn, matplotlib.
+  * Hardware: MacBook.
+  * Models were trained on the training set and evaluated on the validation set.
+* **Stopping Criteria:**
+  * Training continued until all models were compared, and the best-performing model was selected based on accuracy.
 
 ### Performance Comparison
 
-* Clearly define the key performance metric(s).
-* Show/compare results in one table.
-* Show one (or few) visualization(s) of results, for example ROC curves.
+* **Metrics:** Accuracy, precision, recall, and F1-score.
+* **Results:**
+  * Random Forest achieved 100% accuracy.
+  * Logistic Regression achieved 99.75% accuracy.
+  * K-Nearest Neighbors and Support Vector Machines also achieved 100% accuracy.
+* **Conclusion:** Random Forest was selected as the final model due to its simplicity and performance.
 
 ### Conclusions
 
-* State any conclusions you can infer from your work. Example: LSTM work better than GRU.
+* The Random Forest model is highly effective for this classification task, achieving perfect accuracy.
+* Preprocessing and one-hot encoding were critical to the success of the models.
 
 ### Future Work
 
-* What would be the next thing that you would try.
-* What are some other studies that can be done starting from here.
+* Experiment with additional models and hyperparameter tuning to further optimize performance.
+* Use advanced visualization techniques to analyze feature importance in the Random Forest model.
+* Apply the methodology to similar datasets to test generalizability.
 
-## How to reproduce results
+## How to Reproduce Results
 
-* In this section, provide instructions at least one of the following:
-   * Reproduce your results fully, including training.
-   * Apply this package to other data. For example, how to use the model you trained.
-   * Use this package to perform their own study.
-* Also describe what resources to use for this package, if appropirate. For example, point them to Collab and TPUs.
+### Steps:
 
-### Overview of files in repository
+1. **Preprocessing:**
+   * Run the provided Jupyter Notebook (`final_project.ipynb`) to clean and preprocess the data.
+2. **Training:**
+   * Execute the training steps for all models.
+3. **Evaluation:**
+   * Use the evaluation code to generate metrics and validate model performance.
+4. **Submission:**
+   * Apply the trained model to the test set and generate a submission file (`submission.csv`).
 
-* Describe the directory structure, if any.
-* List all relavent files and describe their role in the package.
-* An example:
-  * utils.py: various functions that are used in cleaning and visualizing data.
-  * preprocess.ipynb: Takes input data in CSV and writes out data frame after cleanup.
-  * visualization.ipynb: Creates various visualizations of the data.
-  * models.py: Contains functions that build the various models.
-  * training-model-1.ipynb: Trains the first model and saves model during training.
-  * training-model-2.ipynb: Trains the second model and saves model during training.
-  * training-model-3.ipynb: Trains the third model and saves model during training.
-  * performance.ipynb: loads multiple trained models and compares results.
-  * inference.ipynb: loads a trained model and applies it to test data to create kaggle submission.
+### Overview of Files in Repository
 
-* Note that all of these notebooks should contain enough text for someone to understand what is happening.
+* **Files:**
+  * `final_project.ipynb`: Jupyter Notebook containing all steps of the project.
+  * `submission.csv`: Final predictions for the Kaggle challenge.
+  * `README.md`: Project description and documentation.
 
-### Software Setup
-* List all of the required packages.
-* If not standard, provide or point to instruction for installing the packages.
-* Describe how to install your package.
+## Software Setup
 
-### Data
-
-* Point to where they can download the data.
-* Lead them through preprocessing steps, if necessary.
-
-### Training
-
-* Describe how to train the model
-
-#### Performance Evaluation
-
-* Describe how to run the performance evaluation.
-
+* **Required Packages:**
+  * pandas
+  * scikit-learn
+  * matplotlib
+* **Installation:**
+  * Install the packages using pip:
+    ```bash
+    pip install pandas scikit-learn matplotlib
+    ```
 
 ## Citations
 
-* Provide any references.
-
-
-
-
-
-
+* Mushroom Classification Dataset: [Kaggle](https://www.kaggle.com/datasets/uciml/mushroom-classification).
+* Scikit-learn documentation: https://scikit-learn.org/stable/index.html.
 
