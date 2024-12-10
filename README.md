@@ -2,9 +2,7 @@
 
 ![](UTA-DataScience-Logo.png)
 
-## Project Title
-
-**Mushroom Classification Project**
+## Mushroom Classification Project
 
 This repository holds an attempt to classify mushrooms as edible or poisonous using the Mushroom Classification Dataset from [Kaggle](https://www.kaggle.com/datasets/uciml/mushroom-classification).
 
@@ -24,9 +22,9 @@ My best model, Random Forest, achieved perfect accuracy (100%) on the validation
   * **Input:** A CSV file containing features of mushrooms (22 categorical features) and the target column (`class`).
   * **Size:** 8,124 rows and 23 columns.
   * **Instances:**
-    * Train: 60%
-    * Validation: 20%
-    * Test: 20%
+    * Train: 70%
+    * Validation: 15%
+    * Test: 15%
 
 #### Preprocessing / Clean up
 
@@ -87,7 +85,7 @@ My best model, Random Forest, achieved perfect accuracy (100%) on the validation
 ### Steps:
 
 1. **Preprocessing:**
-   * Run the provided Jupyter Notebook (`final_project.ipynb`) to clean and preprocess the data.
+   * Run the provided Jupyter Notebook (`Final_Project.ipynb`) to clean and preprocess the data.
 2. **Training:**
    * Execute the training steps for all models.
 3. **Evaluation:**
@@ -98,7 +96,7 @@ My best model, Random Forest, achieved perfect accuracy (100%) on the validation
 ### Overview of Files in Repository
 
 * **Files:**
-  * `final_project.ipynb`: Jupyter Notebook containing all steps of the project.
+  * `Final_Project.ipynb`: Jupyter Notebook containing all steps of the project.
   * `submission.csv`: Final predictions for the Kaggle challenge.
   * `README.md`: Project description and documentation.
 
