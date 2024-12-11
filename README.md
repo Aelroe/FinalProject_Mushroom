@@ -4,116 +4,116 @@
 
 ## Mushroom Classification Project
 
-This repository holds an attempt to classify mushrooms as edible or poisonous using the Mushroom Classification Dataset from [Kaggle](https://www.kaggle.com/datasets/uciml/mushroom-classification).
+This project focuses on classifying mushrooms as either edible or poisonous using the Mushroom Classification Dataset from [Kaggle](https://www.kaggle.com/datasets/uciml/mushroom-classification). By leveraging machine learning techniques, the goal was to create a model that accurately predicts mushroom edibility based on their features.
 
 ## Overview
 
-The task is to classify mushrooms as either edible (e) or poisonous (p) based on their features, such as cap shape, color, and odor, provided in the dataset.
+The dataset contains 8,124 rows and 22 categorical features that describe various physical attributes of mushrooms, such as cap shape, color, and odor. The target column (`class`) indicates whether a mushroom is edible (`e`) or poisonous (`p`).
 
-I treated this problem as a classification task. Several machine learning models were trained and compared, including Logistic Regression, Random Forest, K-Nearest Neighbors, and Support Vector Machines. Preprocessing involved cleaning and one-hot encoding categorical features.
+To achieve this, I followed a systematic approach:
+1. Explored the dataset to identify potential issues.
+2. Cleaned the data to handle missing values and irrelevant features.
+3. Visualized feature distributions to understand relationships.
+4. One-hot encoded categorical features to prepare the data for machine learning.
+5. Trained and compared multiple models to find the best-performing classifier.
 
-My best model, Random Forest, achieved perfect accuracy (100%) on the validation set.
+## Summary of Work
 
-## Summary of Workdone
+### Data Exploration
 
-### Data
+The initial exploration revealed:
+- The `veil-type` column had only one unique value and was dropped.
+- The `stalk-root` column contained missing values (`?`), which were replaced with "unknown."
 
-* **Data:**
-  * **Input:** A CSV file containing features of mushrooms (22 categorical features) and the target column (`class`).
-  * **Size:** 8,124 rows and 23 columns.
-  * **Instances:**
-    * Train: 70%
-    * Validation: 15%
-    * Test: 15%
+A brief visualization of the target class distribution:
 
-#### Preprocessing / Clean up
+![](visualizations/class_distribution.png)
 
-* Dropped irrelevant features, such as `veil-type`, which had only one value.
-* Replaced `?` in `stalk-root` with `unknown` to handle missing data.
-* One-hot encoded categorical features, excluding the target column.
-* Ensured that no duplicate columns were present.
+### Data Cleaning and Preprocessing
 
-#### Data Visualization
+To prepare the data:
+- One-hot encoding was applied to all categorical features except the target.
+- The target column (`class`) was encoded as `0` (edible) and `1` (poisonous).
 
-* Histograms were created to compare feature distributions across edible and poisonous mushrooms.
-* Tabular summaries for categorical features were provided for better interpretability.
+### Data Visualization
+
+Feature distributions were compared between edible and poisonous classes. For example, the `odor` feature showed clear distinctions:
+
+![](visualizations/odor_feature.png)
+
+Such visualizations guided model selection by highlighting features with strong predictive potential.
 
 ### Problem Formulation
 
-* **Input / Output:**
-  * Input: Preprocessed features after one-hot encoding.
-  * Output: Binary classification of mushrooms (`e` = edible, `p` = poisonous).
-* **Models:**
-  * Logistic Regression
-  * Random Forest
-  * K-Nearest Neighbors
-  * Support Vector Machines
-* **Metrics:** Accuracy and classification reports were used to evaluate the models.
+The task was treated as a classification problem:
+- **Input:** Preprocessed features after one-hot encoding.
+- **Output:** Binary classification (`0` for edible, `1` for poisonous).
+- **Models Tested:** Logistic Regression, Random Forest, K-Nearest Neighbors, and Support Vector Machines.
 
-### Training
+### Model Training and Comparison
 
-* **Description:**
-  * Software: Python, Jupyter Notebook.
-  * Libraries: pandas, scikit-learn, matplotlib.
-  * Hardware: MacBook.
-  * Models were trained on the training set and evaluated on the validation set.
-* **Stopping Criteria:**
-  * Training continued until all models were compared, and the best-performing model was selected based on accuracy.
+Several models were trained and evaluated using accuracy, precision, recall, and F1-scores. The results are summarized below:
 
-### Performance Comparison
+| Model                  | Validation Accuracy | Test Accuracy | Notes                                   |
+|------------------------|---------------------|---------------|-----------------------------------------|
+| Logistic Regression    | 99.75%             | 99.75%        | Simple and interpretable.               |
+| Random Forest          | 100%               | 100%          | Robust and provided feature importance. |
+| K-Nearest Neighbors    | 100%               | 100%          | Computationally expensive.              |
+| Support Vector Machines| 100%               | 100%          | High accuracy but less interpretable.   |
 
-* **Metrics:** Accuracy, precision, recall, and F1-score.
-* **Results:**
-  * Random Forest achieved 100% accuracy.
-  * Logistic Regression achieved 99.75% accuracy.
-  * K-Nearest Neighbors and Support Vector Machines also achieved 100% accuracy.
-* **Conclusion:** Random Forest was selected as the final model due to its simplicity and performance.
+Random Forest was chosen as the final model for its perfect accuracy and feature importance insights.
 
-### Conclusions
+### Test Set Evaluation
 
-* The Random Forest model is highly effective for this classification task, achieving perfect accuracy.
-* Preprocessing and one-hot encoding were critical to the success of the models.
+The Random Forest model achieved 100% accuracy on the test set, confirming its reliability and generalizability.
 
-### Future Work
+### Submission
 
-* Experiment with additional models and hyperparameter tuning to further optimize performance.
-* Use advanced visualization techniques to analyze feature importance in the Random Forest model.
-* Apply the methodology to similar datasets to test generalizability.
+The trained model's predictions were saved in a `submission.csv` file for evaluation. Here is a snippet of the predictions:
+
+| Index | Prediction |
+|-------|------------|
+| 0     | 1          |
+| 1     | 0          |
+| 2     | 1          |
+| ...   | ...        |
+
+## Conclusions
+
+The project successfully classified mushrooms with perfect accuracy using Random Forest. Key factors in achieving this result included thorough data preprocessing, effective feature encoding, and careful model evaluation.
+
+## Future Work
+
+- Experiment with additional models or hyperparameter tuning.
+- Investigate feature importance to further interpret the model.
+- Apply the methodology to similar datasets for broader validation.
 
 ## How to Reproduce Results
 
-### Steps:
+1. **Preprocessing:** Run the provided Jupyter Notebook (`Final_Project.ipynb`) to clean and preprocess the data.
+2. **Training:** Train the models as outlined in the notebook.
+3. **Evaluation:** Validate and test model performance using the provided code.
+4. **Submission:** Use the `submission.csv` file for evaluation or sharing results.
 
-1. **Preprocessing:**
-   * Run the provided Jupyter Notebook (`Final_Project.ipynb`) to clean and preprocess the data.
-2. **Training:**
-   * Execute the training steps for all models.
-3. **Evaluation:**
-   * Use the evaluation code to generate metrics and validate model performance.
-4. **Submission:**
-   * Apply the trained model to the test set and generate a submission file (`submission.csv`).
+## Files in Repository
 
-### Overview of Files in Repository
-
-* **Files:**
-  * `Final_Project.ipynb`: Jupyter Notebook containing all steps of the project.
-  * `submission.csv`: Final predictions for the Kaggle challenge.
-  * `README.md`: Project description and documentation.
+- `Final_Project.ipynb`: Contains all steps, from data cleaning to model evaluation.
+- `submission.csv`: Final predictions for the test set.
+- `README.md`: Project description and documentation.
 
 ## Software Setup
 
-* **Required Packages:**
-  * pandas
-  * scikit-learn
-  * matplotlib
-* **Installation:**
-  * Install the packages using pip:
-    ```bash
-    pip install pandas scikit-learn matplotlib
-    ```
+- **Required Packages:**
+  - pandas
+  - scikit-learn
+  - matplotlib
+- **Installation:**
+  ```bash
+  pip install pandas scikit-learn matplotlib
+  ```
 
 ## Citations
 
-* Mushroom Classification Dataset: [Kaggle](https://www.kaggle.com/datasets/uciml/mushroom-classification).
-* Scikit-learn documentation: https://scikit-learn.org/stable/index.html.
+- Mushroom Classification Dataset: [Kaggle](https://www.kaggle.com/datasets/uciml/mushroom-classification).
+- Scikit-learn documentation: https://scikit-learn.org/stable/index.html.
 
