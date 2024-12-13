@@ -25,6 +25,8 @@ Key insights from exploration:
 
 The class distribution was nearly balanced:
 
+![image](https://github.com/user-attachments/assets/f8825499-6ed6-4e06-8bc7-d8a1ff673625)
+
 ![](visualizations/class_distribution.png)
 
 ### Data Cleaning and Preprocessing
@@ -39,9 +41,13 @@ Visualizations helped identify predictive features:
 
 - **Feature Importance:** A Random Forest model highlighted the top 15 most important features, with `odor` and `gill-size` being the most predictive.
 
+![image](https://github.com/user-attachments/assets/e3491a74-2994-4970-b0c7-1a82df902d59)
+
 ![image](https://github.com/user-attachments/assets/f8825499-6ed6-4e06-8bc7-d8a1ff673625)
 
 - **Odor Feature:** The `odor` feature strongly distinguished between edible and poisonous mushrooms, showcasing a clear predictive pattern.
+
+![image](https://github.com/user-attachments/assets/bd7b8984-0ff0-4c27-bb04-14d6111baf24)
 
 ![image](https://github.com/user-attachments/assets/bd7b8984-0ff0-4c27-bb04-14d6111baf24)
 
