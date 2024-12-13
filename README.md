@@ -109,4 +109,12 @@ Although the project achieved perfect accuracy, there are areas for further expl
 - `submission.csv`: Final predictions for the test set.
 - `README.md`: Project description and documentation.
 
-## Soft
+## Software Setup
+
+- **Required Packages:**
+  - pandas
+  - scikit-learn
+  - matplotlib
+- **Installation:**
+  ```bash
+  pip install pandas scikit-learn matplotlib
