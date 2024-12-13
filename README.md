@@ -22,7 +22,14 @@ Key insights from exploration:
 - **Odor** was identified as the most significant feature for distinguishing between edible and poisonous mushrooms, showing clear differences between the two classes.
 - Class distributions were nearly balanced, making this a well-suited dataset for classification tasks.
 
-![image](https://github.com/user-attachments/assets/e3491a74-2994-4970-b0c7-1a82df902d59)
+![image](https://github.com/user-attachments/assets/f8825499-6ed6-4e06-8bc7-d8a1ff673625)
+
+- The `veil-type` column had only one unique value and was removed.
+- The `stalk-root` column contained missing values (`?`), which were replaced with "unknown."
+
+The class distribution was nearly balanced:
+
+![](visualizations/class_distribution.png)
 
 ### Data Cleaning and Preprocessing
 
@@ -34,31 +41,43 @@ Data preparation was an essential step to make the dataset ready for machine lea
 
 These preprocessing steps ensured the data was clean, consistent, and suitable for robust model training.
 
+- One-hot encoding was applied to all categorical features except the target.
+- The target column (`class`) was encoded as `0` (edible) and `1` (poisonous).
+
 ### Data Visualization
 
 Visualizations were critical in understanding the dataset and shaping the model:
 - **Feature Importance:** A Random Forest model highlighted the top 15 most important features, with `odor` and `gill-size` being the most predictive.
 
-![image](https://github.com/user-attachments/assets/f8825499-6ed6-4e06-8bc7-d8a1ff673625)
+![image](https://github.com/user-attachments/assets/e3491a74-2994-4970-b0c7-1a82df902d59)
 
 - **Odor Feature:** The `odor` feature strongly distinguished between edible and poisonous mushrooms, showcasing a clear predictive pattern.
 
 ![image](https://github.com/user-attachments/assets/bd7b8984-0ff0-4c27-bb04-14d6111baf24)
 
+- **Odor Feature:** A strong distinction between edible and poisonous mushrooms was observed.
+
+![](visualizations/odor_histogram.png)
+
+- **Cap Shape Feature:** Differences in distributions provided insights for feature importance.
+
+![](visualizations/cap_shape_histogram.png)
+
 ### Problem Formulation
 
-This project was framed as a binary classification problem:
-- **Input:** Preprocessed categorical features after one-hot encoding.
-- **Output:** Binary classification of mushrooms as `0` (edible) or `1` (poisonous).
+The task was framed as a binary classification problem:
+- **Input:** Preprocessed features after one-hot encoding.
+- **Output:** Binary classification (`0` for edible, `1` for poisonous).
 
-To ensure fairness in evaluation, the data was split into training, validation, and test sets in a 70-15-15 ratio using stratified sampling. This strategy preserved class balance across all subsets.
+Models tested:
+- Logistic Regression
+- Random Forest
+- K-Nearest Neighbors
+- Support Vector Machines
 
 ### Model Training and Comparison
 
-We tested four machine learning models: Logistic Regression, Random Forest, K-Nearest Neighbors, and Support Vector Machines. Each model was trained on the training set and evaluated on the validation set. Random Forest emerged as the best model due to:
-- Perfect accuracy on validation and test sets.
-- Its ability to handle categorical features and provide feature importance insights.
-- Robustness to noise and overfitting.
+Each model was trained on a 70% training set and evaluated on a 15% validation set. Results:
 
 | Model                  | Validation Accuracy | Test Accuracy | Notes                                   |
 |------------------------|---------------------|---------------|-----------------------------------------|
@@ -67,9 +86,15 @@ We tested four machine learning models: Logistic Regression, Random Forest, K-Ne
 | K-Nearest Neighbors    | 100%               | 100%          | Computationally expensive.              |
 | Support Vector Machines| 100%               | 100%          | High accuracy but less interpretable.   |
 
+Random Forest was chosen for its perfect accuracy and interpretability through feature importance.
+
 ### Test Set Evaluation
 
-The final Random Forest model was evaluated on the test set and achieved 100% accuracy. This result confirmed the model's reliability and generalizability. Below is a preview of the predictions:
+Random Forest achieved 100% accuracy on the test set, confirming its reliability and generalizability. The preprocessing and modeling steps ensured a robust solution.
+
+### Submission
+
+Predictions from the Random Forest model were saved in `submission.csv`. A preview:
 
 | Index | Prediction |
 |-------|------------|
@@ -78,23 +103,19 @@ The final Random Forest model was evaluated on the test set and achieved 100% ac
 | 2     | 1          |
 | ...   | ...        |
 
-### Submission
-
-The final predictions were saved in `submission.csv` for evaluation and sharing. The project's success lay in combining well-executed preprocessing, feature selection, and robust modeling.
-
 ## Conclusions
 
-This project successfully classified mushrooms with perfect accuracy using Random Forest. Key factors that contributed to this success included:
-- A clean, well-preprocessed dataset.
-- Visualizations that highlighted predictive features like `odor` and `gill-size`.
-- Careful model selection based on performance and interpretability.
+The project successfully classified mushrooms with perfect accuracy using Random Forest. The key elements that ensured this success were:
+- Thorough cleaning and preprocessing.
+- Visualization to identify important features.
+- Careful model evaluation and selection.
 
 ## Future Work
 
-Although the project achieved perfect accuracy, there are areas for further exploration:
-- Hyperparameter tuning to optimize Random Forest and Support Vector Machines.
-- Conducting feature selection experiments to analyze the importance of less influential features.
-- Applying the methodology to similar datasets to test its generalizability.
+Potential areas for further exploration:
+- Hyperparameter tuning for models like Random Forest and Support Vector Machines.
+- Deeper analysis of feature importance to better interpret results.
+- Testing the methodology on similar classification datasets.
 
 ## How to Reproduce Results
 
@@ -118,3 +139,10 @@ Although the project achieved perfect accuracy, there are areas for further expl
 - **Installation:**
   ```bash
   pip install pandas scikit-learn matplotlib
+  ```
+
+## Citations
+
+- Mushroom Classification Dataset: [Kaggle](https://www.kaggle.com/datasets/uciml/mushroom-classification).
+- Scikit-learn documentation: https://scikit-learn.org/stable/index.html.
+
