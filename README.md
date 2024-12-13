@@ -36,7 +36,8 @@ Visualizations helped identify predictive features:
 
 - **Class Distribution:** The dataset is nearly balanced between edible and poisonous mushrooms.
 
-![](visualizations/class_distribution.png)
+![](visualizations/class_distribution.png) ![image](https://github.com/user-attachments/assets/e3491a74-2994-4970-b0c7-1a82df902d59)
+
 
 - **Feature Importance:** Top 15 most important features for classification as determined by Random Forest.
 
