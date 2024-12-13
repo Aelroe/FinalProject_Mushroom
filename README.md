@@ -33,13 +33,18 @@ Data preparation steps:
 ### Data Visualization
 
 Visualizations helped identify predictive features:
-- **Odor Feature:** A strong distinction between edible and poisonous mushrooms was observed.
+
+- **Class Distribution:** The dataset is nearly balanced between edible and poisonous mushrooms.
+
+![](visualizations/class_distribution.png)
+
+- **Feature Importance:** Top 15 most important features for classification as determined by Random Forest.
+
+![](visualizations/feature_importance.png)
+
+- **Odor Feature:** The `odor` feature strongly distinguishes between edible and poisonous mushrooms.
 
 ![](visualizations/odor_histogram.png)
-
-- **Cap Shape Feature:** Differences in distributions provided insights for feature importance.
-
-![](visualizations/cap_shape_histogram.png)
 
 ### Problem Formulation
 
@@ -117,10 +122,3 @@ Potential areas for further exploration:
 - **Installation:**
   ```bash
   pip install pandas scikit-learn matplotlib
-  ```
-
-## Citations
-
-- Mushroom Classification Dataset: [Kaggle](https://www.kaggle.com/datasets/uciml/mushroom-classification).
-- Scikit-learn documentation: https://scikit-learn.org/stable/index.html.
-
