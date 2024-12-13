@@ -22,7 +22,7 @@ Key insights from exploration:
 
 The class distribution was nearly balanced:
 
-![](visualizations/class_distribution.png)
+![image](https://github.com/user-attachments/assets/e3491a74-2994-4970-b0c7-1a82df902d59)
 
 ### Data Cleaning and Preprocessing
 
@@ -34,18 +34,13 @@ Data preparation steps:
 
 Visualizations helped identify predictive features:
 
-- **Class Distribution:** The dataset is nearly balanced between edible and poisonous mushrooms.
-
-![](visualizations/class_distribution.png) ![image](https://github.com/user-attachments/assets/e3491a74-2994-4970-b0c7-1a82df902d59)
-
-
 - **Feature Importance:** Top 15 most important features for classification as determined by Random Forest.
 
-![](visualizations/feature_importance.png)
+![image](https://github.com/user-attachments/assets/f8825499-6ed6-4e06-8bc7-d8a1ff673625)
 
 - **Odor Feature:** The `odor` feature strongly distinguishes between edible and poisonous mushrooms.
 
-![](visualizations/odor_histogram.png)
+![image](https://github.com/user-attachments/assets/bd7b8984-0ff0-4c27-bb04-14d6111baf24)
 
 ### Problem Formulation
 
