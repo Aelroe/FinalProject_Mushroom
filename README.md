@@ -8,7 +8,10 @@ This project focuses on classifying mushrooms as either edible or poisonous usin
 
 ## Overview
 
-The dataset contains 8,124 rows and 22 categorical features describing mushrooms, such as cap shape, color, and odor. The target column (`class`) specifies whether a mushroom is edible (`e`) or poisonous (`p`).
+The dataset contains 8,124 rows and 22 categorical features describing mushrooms, such as cap shape, color, and odor. The target column (`class`) specifies whether a mushroom is edible (`e`) or poisonous (`p`). The dataset is balanced, making it well-suited for classification tasks:
+
+![image](https://github.com/user-attachments/assets/e3491a74-2994-4970-b0c7-1a82df902d59)
+
 
 To achieve 100% classification accuracy, Random Forest was selected as the final model after comparing it with Logistic Regression, K-Nearest Neighbors, and Support Vector Machines. This result was achieved by combining detailed data exploration, preprocessing, feature visualization, and model evaluation.
 
@@ -17,13 +20,6 @@ To achieve 100% classification accuracy, Random Forest was selected as the final
 ### Data Exploration
 
 Key insights from exploration:
-- The `veil-type` column had only one unique value and was removed to simplify the dataset.
-- The `stalk-root` column contained missing values (`?`), which were replaced with "unknown" to ensure no data loss.
-- **Odor** was identified as the most significant feature for distinguishing between edible and poisonous mushrooms, showing clear differences between the two classes.
-- Class distributions were nearly balanced, making this a well-suited dataset for classification tasks.
-
-![image](https://github.com/user-attachments/assets/f8825499-6ed6-4e06-8bc7-d8a1ff673625)
-
 - The `veil-type` column had only one unique value and was removed.
 - The `stalk-root` column contained missing values (`?`), which were replaced with "unknown."
 
@@ -33,35 +29,21 @@ The class distribution was nearly balanced:
 
 ### Data Cleaning and Preprocessing
 
-Data preparation was an essential step to make the dataset ready for machine learning:
-- One-hot encoding was applied to all categorical features, ensuring compatibility with machine learning models.
-- The target column (`class`) was encoded as `0` for edible and `1` for poisonous mushrooms.
-- To address missing data in `stalk-root`, the value `'?'` was replaced with "unknown."
-- Irrelevant features like `veil-type`, which added no variability, were dropped.
-
-These preprocessing steps ensured the data was clean, consistent, and suitable for robust model training.
-
+Data preparation steps:
 - One-hot encoding was applied to all categorical features except the target.
 - The target column (`class`) was encoded as `0` (edible) and `1` (poisonous).
 
 ### Data Visualization
 
-Visualizations were critical in understanding the dataset and shaping the model:
+Visualizations helped identify predictive features:
+
 - **Feature Importance:** A Random Forest model highlighted the top 15 most important features, with `odor` and `gill-size` being the most predictive.
 
-![image](https://github.com/user-attachments/assets/e3491a74-2994-4970-b0c7-1a82df902d59)
+![image](https://github.com/user-attachments/assets/f8825499-6ed6-4e06-8bc7-d8a1ff673625)
 
 - **Odor Feature:** The `odor` feature strongly distinguished between edible and poisonous mushrooms, showcasing a clear predictive pattern.
 
 ![image](https://github.com/user-attachments/assets/bd7b8984-0ff0-4c27-bb04-14d6111baf24)
-
-- **Odor Feature:** A strong distinction between edible and poisonous mushrooms was observed.
-
-![](visualizations/odor_histogram.png)
-
-- **Cap Shape Feature:** Differences in distributions provided insights for feature importance.
-
-![](visualizations/cap_shape_histogram.png)
 
 ### Problem Formulation
 
